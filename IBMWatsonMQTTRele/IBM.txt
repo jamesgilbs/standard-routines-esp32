@@ -1,0 +1,37 @@
+Organization ID
+kz9i2l
+Device Type
+ESP32
+Device ID
+001
+Authentication Method
+use-token-auth
+Authentication Token
+?AgVV7!jFINxNg9D4T
+
+Device ID
+001
+Device Type
+ESP32
+Date Added
+Sep 22, 2020 5:12 PM
+Added By
+jamesgil.sousa@gmail.com
+Connection Status
+Disconnected
+
+API Utilizada pelo ESP32
+API Key a-kz9i2l-z9chqjln06
+Token C*oK30VbBqerEz*Z7O
+
+NODE_RED_USERNAME - the username
+NODE_RED_PASSWORD - the password
+NODE_RED_GUEST_ACCESS - if set to `true`, allows anyone read-only access to the editor
+
+Bibliotecas Node-red
+node-red-dashboard
+node-red-contrib-scx-ibmiotapp
+
+Alterar 
+checkLogin
+commandRelay

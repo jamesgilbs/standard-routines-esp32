@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=auto">
+  <title>IeC 103 - Configuração com JSON & SPIFFS</title>
+  <link href="css" rel="stylesheet">
+</head>
+<body>
+  <h1>IeC 103 - Configuração com JSON & SPIFFS</h1>
+  <h2>
+    <a href="/">Home</a> |
+    <a href="config">Configuração</a> |
+    <a href="reconfig" onclick="return confirm('Reconfigurar módulo?')">Reconfigurar</a> |
+    <a href="reboot" onclick="return confirm('Reiniciar módulo?')">Reiniciar</a>
+  </h2>
+  <h3>
+  <table>
+    <tr>
+      <th colspan="2" class="msg">Bem-vindo à Interface Web</th>
+    </tr>
+    <tr>
+      <th>Identificação</th><td>#id#</td>
+    </tr>
+    <tr>
+      <th>LED</th><td>#led#</td>
+    </tr>
+    <tr>
+      <th>Inicializações</th><td>#bootCount#</td>
+    </tr>
+    <tr>
+      <th>Nr. Serial</th><td>#serial#</td>
+    </tr>
+    <tr>
+      <th>Software</th><td>#software#</td>
+    </tr>
+    <tr>
+      <th>IP Interno</th><td>#sysIP#</td>
+    </tr>
+    <tr>
+      <th>IP Cliente</th><td>#clientIP#</td>
+    </tr>
+    <tr>
+      <th>Tempo Ativo</th><td>#active#</td>
+    </tr>
+    <tr>
+      <th>Navegador</th><td colspan="3">#userAgent#</td>
+    </tr>
+  </table>
+  </h3>
+</body>
+</html>
