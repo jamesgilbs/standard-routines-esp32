@@ -1,34 +1,4 @@
-//Change file TFT_eSPI \ User_Setup.h
-
-/*1° - #define ST7735_DRIVER      // Define additional parameters below for this display
-
-  2° - // For ESP32 Dev board (only tested with ILI9341 display)
-  // The hardware SPI can be mapped to any pins
-
-  #define TFT_MISO 19
-  #define TFT_MOSI 23
-  #define TFT_SCLK 18
-  #define TFT_CS   22  // Chip select control pin
-  #define TFT_DC   5  // Data Command control pin
-  #define TFT_RST   21  // Reset pin (could connect to RST pin)
-  //#define TFT_RST  -1  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
-
-  //#define TOUCH_CS 21     // Chip select pin (T_CS) of touch screen
-
-  //#define TFT_WR 22    // Write strobe for modified Raspberry Pi TFT only
-*/
-
 #include <TFT_eSPI.h> //https://github.com/Bodmer/TFT_eSPI.git 2.2.14
-/*
-  User_Setup.h
-  #define TFT_MISO 19
-  #define TFT_MOSI 23
-  #define TFT_SCLK 18
-  #define TFT_CS   22  // Chip select control pin
-  #define TFT_DC   5  // Data Command control pin
-  #define TFT_RST   21  // Reset pin (could connect to RST pin)
-*/
-
 #include <SPI.h>
 
 //Pinning on User_Setup.h in the library folder

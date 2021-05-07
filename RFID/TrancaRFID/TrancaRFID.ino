@@ -12,7 +12,7 @@
 //define alguns pinos do esp32 que serao conectados aos modulos e componentes
 #define LedVerde 33
 #define LedVermelho 32
-#define tranca //35
+#define tranca 35
 #define buzzer 15
 #define SS_PIN 21
 #define RST_PIN 22
