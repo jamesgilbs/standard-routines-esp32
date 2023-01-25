@@ -1,13 +1,11 @@
-
-// algumas bibliotecas
 #include <SPI.h>
 #include <MFRC522.h>
 #include <Wire.h>
 //#include <LiquidCrystal_I2C.h>
 
 // Definiremos o id que sera liberado o acesso
-
 #define ID "29 8B 65 4C"
+#define ID2 "49 F7 E3 6E"
 
 //define alguns pinos do esp32 que serao conectados aos modulos e componentes
 #define LedVerde 33
@@ -72,7 +70,7 @@ Serial.println();
   conteudo.toUpperCase();                      // deixa as letras da string todas maiusculas
 
 
-  if (conteudo.substring(1) == ID){ // verifica se o ID do cartao lido tem o mesmo ID do cartao que queremos liberar o acesso
+  if (conteudo.substring(1) == ID || conteudo.substring(1) == ID2){ // verifica se o ID do cartao lido tem o mesmo ID do cartao que queremos liberar o acesso
 
       digitalWrite(LedVerde, HIGH);            // ligamos o led verde
       //lcd.clear();                             // limpamos oque havia sido escrito no lcd
@@ -80,7 +78,7 @@ Serial.println();
 
       digitalWrite(tranca, HIGH);              //abrimos a tranca por 5 segundos
 
-      for(byte s = 5; s > 0; s--){             //vai informando ao usuario quantos segundos faltao para a tranca ser fechada
+      for(byte s = 1; s > 0; s--){             //vai informando ao usuario quantos segundos faltao para a tranca ser fechada
         //lcd.setCursor(8,1);
         //lcd.print(s);
         delay(1000);
@@ -94,7 +92,7 @@ Serial.println();
 
     digitalWrite(LedVermelho, HIGH);           // vamos ligar o led vermelho
 
-    for(byte s = 5; s > 0; s--){               // uma contagem / espera para poder fazer uma nova leitura
+    for(byte s = 1; s > 0; s--){               // uma contagem / espera para poder fazer uma nova leitura
 
         //lcd.clear();                           // limpa as informacoes que estao na tela
         //lcd.home();                            // nota na posicao inicial
