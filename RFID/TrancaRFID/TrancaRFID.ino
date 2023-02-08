@@ -15,7 +15,6 @@
 #define SS_PIN 21
 #define RST_PIN 22
 
-
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // define os pinos de controle do modulo de leitura de cartoes RFID
 //LiquidCrystal_I2C lcd(0x27, 16, 2); // define informacoes do lcd como o endereço I2C (0x27) e tamanho do mesmo
 
@@ -69,7 +68,6 @@ void loop() {
 Serial.println();
   conteudo.toUpperCase();                      // deixa as letras da string todas maiusculas
 
-
   if (conteudo.substring(1) == ID || conteudo.substring(1) == ID2){ // verifica se o ID do cartao lido tem o mesmo ID do cartao que queremos liberar o acesso
 
       digitalWrite(LedVerde, HIGH);            // ligamos o led verde
@@ -99,7 +97,6 @@ Serial.println();
         //lcd.print("Acesso negado");            // infoma ao usuario que ele nao tem acesso
         //lcd.setCursor(8,1);                    // coloca o cursor na coluna 8 da linha 2
         //lcd.print(s);                          // informa quantos segundos faltam para pode fazer uma nova leitura
-
 
         // faz o buzzer emitir um bip por segundo
           delay(800);
