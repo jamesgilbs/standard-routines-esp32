@@ -6,8 +6,8 @@
 
 Adafruit_MPU6050 mpu;
 
-#define I2C_SDA 14
-#define I2C_SCL 15
+#define I2C_SDA 21
+#define I2C_SCL 22
 
 void setup(void) {
   Serial.begin(115200);

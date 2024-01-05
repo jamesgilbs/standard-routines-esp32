@@ -11,7 +11,7 @@ TFT_eSPI tft = TFT_eSPI();
 #define TFT_GREY 0x5AEB
 #define TFT_ORANGE      0xFD20      /* 255, 165,   0 */
 
-int PinA0 = A0;//sinal analógico do sensor MQ-2
+int PinA0 = A0;//sinal analógico do sensor MQ-2 (PIN VP)
 
 float ltx = 0;    //X coord salva da parte inferior da agulha
 uint16_t osx = M_SIZE*120, osy = M_SIZE*120; //Coordenadas x e y salvos
@@ -40,13 +40,19 @@ void loop() {
   if (updateTime <= millis()) {
     updateTime = millis() + 100; //Atualizar medidor a cada 35 milissegundos
  
-    //onda Senoidal para Teste
-    //d += 4; if (d >= 360) d = 0;
-    //value[0] = 50 + 50 * sin((d + 0) * 0.0174532925);
+    /*//onda Senoidal para Teste
+    d += 4; if (d >= 360) d = 0;
+    value[0] = 50 + 50 * sin((d + 0) * 0.0174532925);*/
 
-    //valor ramdomico
-    //value[0] = random(0,100);
-
+    /*//valor ramdomico
+    value[0] = random(0,100);*/
+    
+    /*//campo magnetico sensor hall interno
+    int measurement = 0;
+    //faz a leitura do sensor hall
+    measurement = hallRead();
+    value [0] = measurement; */
+    
     //valor em adc0
     value [0] = analogRead(PinA0)/5;//ajuste da escala de 100% para em 75% sinalizar 300mV
     
@@ -63,10 +69,10 @@ void analogMeter()
 {
 
   //Contorno do medidor
-  tft.fillRect(0, 0, M_SIZE*239, M_SIZE*131, TFT_GREY);
+  //tft.fillRect(0, 0, M_SIZE*239, M_SIZE*131, TFT_GREY); //Moldura
   tft.fillRect(1, M_SIZE*3, M_SIZE*234, M_SIZE*125, TFT_WHITE);
 
-  tft.setTextColor(TFT_BLACK);  // Text colour
+  tft.setTextColor(TFT_GREY);  // Text colour
 
   //Desenhe carrapatos a cada 5 graus de -50 a +50 graus (100 graus FSD swing)
   for (int i = -50; i < 51; i += 5) {
@@ -144,7 +150,7 @@ void analogMeter()
 
   tft.drawString("ppm", M_SIZE*(3 + 230 - 40), M_SIZE*(119 - 20), 2); //Unidades no canto inferior direito
   tft.drawCentreString("%Gas", M_SIZE*120, M_SIZE*75, 4); //Comente para evitar a fonte 4
-  tft.drawRect(1, M_SIZE*3, M_SIZE*236, M_SIZE*126, TFT_BLACK); //Desenhar linha de moldura
+  //tft.drawRect(1, M_SIZE*3, M_SIZE*236, M_SIZE*126, TFT_BLACK); //Desenhar linha de moldura
 
   plotNeedle(0, 0); //Coloque a agulha do medidor em 0
 }
@@ -187,7 +193,7 @@ void plotNeedle(int value, byte ms_delay)
 
     //Redesenhar o texto sob a agulha
     tft.setTextColor(TFT_BLACK, TFT_WHITE);
-    tft.drawCentreString("%Gas", M_SIZE*120, M_SIZE*75, 4); //Comente para evitar a fonte 4
+    tft.drawCentreString("% Gas", M_SIZE*120, M_SIZE*75, 4); //Comente para evitar a fonte 4
 
     //Armazene novas coords de agulha para o próximo apagamento
     ltx = tx;

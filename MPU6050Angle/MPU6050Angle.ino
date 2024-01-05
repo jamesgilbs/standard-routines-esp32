@@ -4,8 +4,8 @@
 
 MPU6050 mpu6050(Wire);
 
-#define I2C_SDA 14
-#define I2C_SCL 15
+#define I2C_SDA 21
+#define I2C_SCL 22
 
 #define pinLedXR 32
 #define pinLedXL 33

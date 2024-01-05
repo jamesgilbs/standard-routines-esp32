@@ -32,10 +32,10 @@ TFT_eSPI display = TFT_eSPI();
 #define INTERVAL 1000
 
 //SSID da rede
-#define SSID "TP-LINK_DF56FC"
+#define SSID "WiFi-CasaNova"
 
 //Senha da sua rede
-#define PASSWORD "86586962"
+#define PASSWORD "casanova"
 
 //Server MQTT que iremos utlizar
 #define MQTT_SERVER "quickstart.messaging.internetofthings.ibmcloud.com"

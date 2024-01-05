@@ -13,6 +13,11 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 
+//Display
+#include <SPI.h>
+#include <TFT_eSPI.h>
+TFT_eSPI tft = TFT_eSPI();
+
 #define I2C_SDA 14
 #define I2C_SCL 15
 
@@ -29,6 +34,11 @@ void setup() {
   I2CBME.begin(I2C_SDA, I2C_SCL, 100000);
 
   bool status;//Status BME280
+
+  tft.init();
+  tft.setRotation(1);
+  resetDisplay();
+  tft.fillScreen(TFT_RED);
 
   // default settings
   // (you can also pass in a Wire library object like &Wire2)
@@ -50,10 +60,18 @@ void loop() {
 }
 
 void printValues() {
+  
+  tft.fillScreen(TFT_RED);
+  tft.setTextColor(TFT_WHITE, TFT_RED);
+  tft.setTextSize(1);
+  
   Serial.print("Temperature = ");
   Serial.print(bme.readTemperature());
   Serial.println(" *C");
-  
+  tft.setCursor (5, 35, 1);
+  tft.print("Temperature: ");
+  tft.print(bme.readTemperature());
+  tft.print(" *C");
   // Convert temperature to Fahrenheit
   /*Serial.print("Temperature = ");
   Serial.print(1.8 * bme.readTemperature() + 32);
@@ -62,14 +80,36 @@ void printValues() {
   Serial.print("Pressure = ");
   Serial.print(bme.readPressure() / 100.0F);
   Serial.println(" hPa");
-
-  Serial.print("Approx. Altitude = ");
+  tft.setCursor (5, 50, 1);
+  tft.print("Pressure: ");
+  tft.print(bme.readPressure());
+  tft.print(" hpa");
+  
+  Serial.print("Approx.Altitude = ");
   Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
   Serial.println(" m");
-
+  tft.setCursor (5, 65, 1);
+  tft.print("Approx. Altitude: ");
+  tft.print(bme.readAltitude(SEALEVELPRESSURE_HPA)/100);
+  tft.print(" m");
+  
   Serial.print("Humidity = ");
   Serial.print(bme.readHumidity());
   Serial.println(" %");
+  tft.setCursor (5, 80, 1);
+  tft.print("Humidity: ");
+  tft.print(bme.readHumidity());
+  tft.print(" %");
 
   Serial.println();
+  delay(3000);
+  resetDisplay();
+}
+
+/*******************************************************************************
+                               DISPLAY RESET
+********************************************************************************/
+void resetDisplay() {
+  tft.fillScreen(TFT_RED); //Clean the display with black color
+  //tft.setTextColor(TFT_YELLOW, TFT_BLACK); //Puts text as white with black background
 }
